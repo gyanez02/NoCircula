@@ -1,23 +1,26 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import axios from 'axios';
 import Vehicle from "./Vehicle";
+import {getVehicles,saveVehicle} from '../services/requests'
 
-const api = axios.create({
+
+
+/*const api = axios.create({
 
     baseURL: 'https://reqbin.com/echo/get/json'
 })
+*/
 
+const VehicleContainer = () => {
+    
+    
+    const handleSubmit = (data) =>{
+        getVehicles(data);
 
-class VehicleContainer extends Component{
-    constructor(){
-        super();
-        api.get('/').then(res =>{
-            console.log(res.data)
-        })
     }
-
-    render(){
-        return <Vehicle/>
-    }
+    
+        return <Vehicle handleSubmit={handleSubmit}/>
+      
+    
 }
 export default VehicleContainer
